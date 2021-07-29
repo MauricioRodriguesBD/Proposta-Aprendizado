@@ -8,6 +8,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
+import zup.aprendizado.proposta.validacao.CpfOrCnpj;
+
 /*
  * Uma proposta deve conter
  * CPF/CNPJ -> Deve ser válido
@@ -18,9 +20,10 @@ import javax.validation.constraints.PositiveOrZero;
  */
 
 public class PropostaRequest {
-	
+
 	@NotNull
 	@Column(nullable = false)
+	@CpfOrCnpj
 	private String documento;
 
 	@Email
@@ -41,8 +44,13 @@ public class PropostaRequest {
 	@Column(nullable = false)
 	private BigDecimal salario;
 
-	public PropostaRequest(String documento, @Email @NotNull String email, @NotBlank String nome, @NotBlank String endereco,
-			@NotNull @PositiveOrZero BigDecimal salario) {
+	
+
+	// Apenas Getters Até o momento, colocarei todos os Getters com o intuito de
+	// observar o que ele retorna
+
+	public PropostaRequest(@NotNull String documento, @Email @NotNull String email, @NotBlank String nome,
+			@NotBlank String endereco, @NotNull @PositiveOrZero BigDecimal salario) {
 		super();
 		this.documento = documento;
 		this.email = email;
@@ -50,8 +58,10 @@ public class PropostaRequest {
 		this.endereco = endereco;
 		this.salario = salario;
 	}
-	// Apenas Getters Até o momento, colocarei todos os Getters com o intuito de
-	// observar o que ele retorna
+
+	public String getDocumento() {
+		return documento;
+	}
 
 	public String getEmail() {
 		return email;

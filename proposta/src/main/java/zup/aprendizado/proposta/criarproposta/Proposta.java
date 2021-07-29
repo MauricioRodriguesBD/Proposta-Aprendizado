@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import zup.aprendizado.proposta.validacao.CpfOrCnpj;
+
 /*
  * Uma proposta deve conter
  * CPF/CNPJ -> Deve ser válido
@@ -23,6 +25,7 @@ public class Proposta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@CpfOrCnpj
 	private String documento;
 
 	private String email;
@@ -32,6 +35,10 @@ public class Proposta {
 	private String endereco;
 
 	private BigDecimal salario;
+	
+	//Proibe construtor vazio
+	@Deprecated
+	private Proposta() {}
 
 	// Construtor sem Id já que ele será gerado automaticamente
 
