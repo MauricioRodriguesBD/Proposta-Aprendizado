@@ -14,7 +14,7 @@ import javax.persistence.Id;
  * Nome -> não pode ser vazio ou nulo
  * Endereço -> Não pode ser vazio ou nulo
  * Salário -> Não pode ser vazio, nulo ou negativo
- */
+ */ 
 
 @Entity
 public class Proposta {
